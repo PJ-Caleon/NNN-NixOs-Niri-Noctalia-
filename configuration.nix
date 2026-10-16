@@ -100,7 +100,7 @@ services.blueman.enable = true;
     isNormalUser = true;
     shell = pkgs.fish;
     description = "exfemboy";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout" "docker" ];
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -162,17 +162,27 @@ services.blueman.enable = true;
     unzip
     kitty
     starship
-    git
     flatpak
     neovim
-    gcc
     ripgrep
+    gcc
     fd
     btop
 
     # Coding Dev
-    python3
-    python3Packages.pip
+    gcc-arm-embedded
+    gdb
+    openocd
+    stlink
+    gnumake
+    cmake
+    ninja
+    git
+    picocom
+    cppcheck
+    renode
+    qemu
+    (python3.withPackages (ps: with ps; [ pyserial matplotlib scipy pytest ]))
 
     # Applications
     thunderbird
@@ -201,6 +211,10 @@ services.blueman.enable = true;
   security.pam.services.rei-lock = {};
   environment.etc."sddm-faces/exfemboy.face.icon".source = ./face.png;
   services.displayManager.sddm.settings.Theme.FacesDir = "/etc/sddm-faces";
+
+  # ST-Link and OpenOCD Udev rules
+  services.udev.packages = [ pkgs.stlink pkgs.openocd ];
+  virtualisation.docker.enable = true; 
 
   environment.variables.EDITOR = "nvim";
 
