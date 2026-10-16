@@ -48,6 +48,22 @@
 
   services.printing.enable = true;
 
+  # Nvidia
+  services.xserver.videoDrivers = [ "nvidia" ];
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    open = false; 
+    package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
+
+    prime = {
+      offload.enable = true;
+      offload.enableOffloadCmd = true; 
+      intelBusId  = "PCI:0:2:0";  
+      nvidiaBusId = "PCI:1:0:0";  
+    };
+  };
+
   # Sddm
   services.displayManager = {
   	sddm = {
@@ -160,6 +176,7 @@ services.blueman.enable = true;
 
     # Applications
     thunderbird
+    osu-lazer
     obsidian
     flameshot
     grim
