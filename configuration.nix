@@ -22,6 +22,8 @@
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
+  systemd.services.NetworkManager-wait-online.enable = false;
+
   time.timeZone = "Asia/Singapore";
 
   i18n.defaultLocale = "en_SG.UTF-8";
@@ -91,6 +93,12 @@ hardware.bluetooth = {
   enable = true;
   powerOnBoot = true;
   settings.General.Experimental = true;
+};
+
+  # Screenshare 
+  xdg.portal = {
+  	enable = true;
+	extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
 };
 
 # Temporary GUI + pairing agent
@@ -192,7 +200,7 @@ services.blueman.enable = true;
     grim
     steam
     localsend
-    (discord.override { withVencord = true;})
+    vesktop 
 
     # Misc
     xwayland-satellite
