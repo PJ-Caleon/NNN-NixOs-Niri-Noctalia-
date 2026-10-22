@@ -156,6 +156,9 @@ services.blueman.enable = true;
 	theme = "rei";
 	};
 
+  programs.localsend.enable = true;
+  programs.localsend.openFirewall = true;
+
     # Extra Services
     services.flatpak.enable = true;
 
