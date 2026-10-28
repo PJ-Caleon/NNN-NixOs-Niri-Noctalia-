@@ -166,6 +166,7 @@ services.blueman.enable = true;
 
     # CLI Commands
     ani-cli
+    manga-tui
     yazi 
     fish 
     fastfetch
@@ -206,6 +207,7 @@ services.blueman.enable = true;
     vesktop 
 
     # Misc
+    phinger-cursors
     xwayland-satellite
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     swayidle
