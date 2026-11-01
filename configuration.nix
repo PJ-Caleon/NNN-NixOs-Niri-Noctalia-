@@ -204,7 +204,8 @@ services.blueman.enable = true;
     grim
     steam
     localsend
-    vesktop 
+    vesktop
+    obs-studio
 
     # Misc
     phinger-cursors
