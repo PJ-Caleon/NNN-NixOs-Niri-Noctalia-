@@ -206,6 +206,7 @@ services.blueman.enable = true;
     localsend
     vesktop
     obs-studio
+    kicad
 
     # Misc
     phinger-cursors
